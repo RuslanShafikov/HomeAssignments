@@ -1,0 +1,14 @@
+
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+secret.txt
+passwor.txt
+badimages.txt
+keys.json
+/.vscode
+/.idea
+*.suo
+*.user
