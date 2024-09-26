@@ -1,4 +1,8 @@
-
+# task 1 "Hello, world"
+# Shafikov Ruslan
+# st112650@student.spbu.ru
+# группа 83
+*.o
 *.exe
 *.dll
 *.so

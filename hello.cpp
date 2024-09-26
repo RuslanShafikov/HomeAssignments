@@ -1,5 +1,14 @@
-#include "hello.h"
-int hello() {
+
+
+/*
+task 1 "Hello, world"
+Shafikov Ruslan 
+st112650@student.spbu.ru
+группа Б83
+	*/
+
+  #include "hello.h"
+  void hello() {
 	std::cout << "Hello, world!";
 	std::string name = "";
 	while (std::cin) {
@@ -9,5 +18,5 @@ int hello() {
 			break;
 		}
 	}
-	return 0;
+	return;
 }

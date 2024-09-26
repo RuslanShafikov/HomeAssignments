@@ -1,3 +1,8 @@
+# task 1 "Hello, world"
+# Shafikov Ruslan
+# st112650@student.spbu.ru
+# группа 83
+
 CXX = g++
 
 CXXFLAGS = -Wall -g
@@ -15,6 +20,5 @@ main.o: main.cpp hello.h
 hello.o: hello.cpp hello.h
 	$(CXX) $(CXXFLAGS) -c hello.cpp
 
-# Clean rule to remove object files and the executable
 clean:
 	rm -f $(OBJ) $(TARGET)
