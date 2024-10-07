@@ -1,5 +1,17 @@
 #include "Annotation.h"
 #include <iostream>
+
+bool isPrioretized(char a, char b) {
+	if (a == '+' || a == '-') {
+		return true;
+	}
+	else if ((a == '*' || a == '/') && (b == '/' || b == '*')) {
+		return true;
+	}
+
+	return false;
+
+}
 int calc(char ch, int a, int b) {
 	if (ch == '+') {
 		return a + b;
@@ -45,30 +57,36 @@ void toPrefix(char* array, int size, int operatorSize) {
 			// we just skip you
 		}
 
-		else if (k > 0) {
-			if ((array[i] == '*' || array[i] == '/') && (operatorStack[k-1] == '-' || operatorStack[k-1] == '+')) {
-				operatorStack[k] = array[i];
+		    else if (k == 0) {
+				operatorStack[0] = array[i];
 				++k;
-				++operatorPointer;
 			}
-			else {
-				while (k != 0) {
+			else if (k > 0) {
+			if (isPrioretized(array[i], operatorStack[k - 1])) {
+				while (k != 0 && isPrioretized(array[i], operatorStack[k - 1])) { // if priority is high enough we add to the final notation
 					polandNotation[j] = *operatorPointer;
 					++j;
-					operatorStack[k] = ' ';
+					operatorStack[k - 1] = ' ';
 					--operatorPointer;
 					--k;
 				}
 				++operatorPointer;
-				operatorStack[0] = array[i];
+				if (k > 0) {
+					operatorStack[k] = array[i];
+				}
+				else {
+					operatorStack[0] = array[i];
+				}
 				++k;
 			}
+
+			else {
+				operatorStack[k] = array[i];
+				++k;
+				++operatorPointer;
+			}
 		}
-		else {
-			operatorStack[k] = array[i];
-			++k;
-			//++operatorPointer;
-		}
+		
 
 
 	}
@@ -123,18 +141,12 @@ int PrefixCalculator(char* array, int size,int operandSize) {
 		}
 
 		else{
-			if (resActions == 0) {
 				res = calc(array[i], operandStack[k - 2], operandStack[k - 1]);
 				k -= 2;
 				operandPointer -= 2;
-				++resActions;
-			}
-			else {
-				res = calc(array[i], operandStack[k - 1], res);
-				++resActions;
-				--k;
-				--operandPointer;
-			}
+				operandStack[k] = res;
+				++k;
+				++operandPointer;
 		}
 
 	}

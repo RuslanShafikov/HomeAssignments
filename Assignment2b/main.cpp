@@ -36,6 +36,13 @@ int main(int argc, char* argv[])
             }
         }
     }
+    //checking division by 0
+    for (int i = 1; i < size; ++i) {
+        if ((array[i-1]== '/' && array[i]== '0')) {
+             outfile << "Error, division by 0 is prohibited";
+             return -1;
+        }
+    }
 
     if (array[size - 1] - '0' < 0 || array[size - 1] - '0' > 9) {
         outfile << "Error, the last symbol should be integer, not arithmetic operation";
@@ -82,7 +89,7 @@ int main(int argc, char* argv[])
         }
     }
     toPrefix(array1, size + num + 1, operatorSize);
-    for (int i = 0; i < size + num; ++i) {
+    for (int i = 0; i < size + num + 1; ++i) {
         std::cout << array1[i];
     }
 
