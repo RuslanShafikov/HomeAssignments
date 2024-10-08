@@ -97,17 +97,10 @@ void toPrefix(char* array, int size, int operatorSize) {
 		++j;
 		--operatorPointer;
 	}
-	for (int i = 0; i < size; ++i) {
-		std::cout << polandNotation[i];
-	}
-
-	std::cout << std::endl;
 
 	for (int i = 0; i < size; ++i) {
 		array[i] = polandNotation[i];
 	}
-
-	std::cout << std::endl;
 
 	delete[] polandNotation;
 	delete[] operatorStack;

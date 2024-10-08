@@ -50,13 +50,6 @@ int main(int argc, char* argv[])
     }
 
 
-
-    for (int i = 0; i < size; ++i) {
-        std::cout << array[i];
-    }
-
-    std::cout << std::endl;
-
     int operandSize = 0; // array size for operands
     int operatorSize = 0; // array size for operators
     for (int i = 0; i < size; ++i) {
@@ -89,9 +82,6 @@ int main(int argc, char* argv[])
         }
     }
     toPrefix(array1, size + num + 1, operatorSize);
-    for (int i = 0; i < size + num + 1; ++i) {
-        std::cout << array1[i];
-    }
 
     int res = PrefixCalculator(array1, size + num + 1, operandSize);
 
@@ -100,5 +90,6 @@ int main(int argc, char* argv[])
     infile.close();
     outfile.close();
     delete[] array;
+    delete[] array1;
     return 0;
 }
