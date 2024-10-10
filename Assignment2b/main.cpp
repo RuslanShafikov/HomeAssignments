@@ -9,7 +9,6 @@ Description
 The program reads file containing integers and arithmetical operations. Transforms input into reversed poland notation and then calculates the final result.
 
 */
-
 #include "Annotation.h"
 #include <iostream>
 #include <fstream>
@@ -42,7 +41,7 @@ int main(int argc, char* argv[])
     //checking if the expression is valid
     for (int i = 0; i < size; ++i) {
         if (!(array[i] - '0' >= 0 && array[i] - '0' <= 9)) {
-            if (array[i] != '+' && array[i]!='-' && array[i] != '/' && array[i] != '*' && array[i] != ' ') {
+            if (array[i] != '+' && array[i]!='-' && array[i] != '/' && array[i] != '*' && array[i] != ' ' && array[i] != '(' && array[i] != ')') {
                 outfile << "Error, pleas use only allowed symbols";
                 return -1;
             }
@@ -56,11 +55,35 @@ int main(int argc, char* argv[])
         }
     }
 
-    if (array[size - 1] - '0' < 0 || array[size - 1] - '0' > 9) {
-        outfile << "Error, the last symbol should be integer, not arithmetic operation";
+    //checking if amount of ( is equal to amount of )
+    int bracketsDifference = 0;
+    for (int i = 0; i < size; ++i) {
+        if (array[i] == '(') {
+            ++bracketsDifference;
+        }
+
+        else if (array[i]==')') {
+            --bracketsDifference;
+        }
+
+    }
+
+    if (bracketsDifference != 0) {
+        outfile << "Error, wrong amount of brackets";
         return -1;
     }
 
+    if ((array[size - 1] - '0' < 0 || array[size - 1] - '0' > 9) && array[size-1]!=')') {
+        outfile << "Error, the last symbol should be integer or ')', not arithmetic operation";
+        return -1;
+    }
+
+
+    for (int i = 0; i < size; ++i) {
+        std::cout << array[i];
+    }
+
+    std::cout << std::endl;
 
     int operandSize = 0; // array size for operands
     int operatorSize = 0; // array size for operators
@@ -82,7 +105,7 @@ int main(int argc, char* argv[])
     char* array1 = new char[size + 1 + num];
     int j = 0;
     for (int i = 0; i < size + 1 + num; ++i) {
-        if ((array[j] == '+' || array[j] == '-' || array[j] == '/' || array[j] == '*')) {
+        if ((array[j] == '+' || array[j] == '-' || array[j] == '/' || array[j] == '*' || array[j] == '(' || array[j] == ')')) {
             array1[i] = ' ';
             ++i;
             array1[i] = array[j];
@@ -93,9 +116,9 @@ int main(int argc, char* argv[])
         ++j;
         }
     }
-    toPrefix(array1, size + num + 1, operatorSize);
+    size = toPrefix(array1, size + num , operatorSize); //NUM+1
 
-    int res = PrefixCalculator(array1, size + num + 1, operandSize);
+    int res = PrefixCalculator(array1, size, operandSize);
 
     outfile << res;
 

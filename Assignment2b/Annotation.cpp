@@ -10,11 +10,11 @@ The program reads file containing integers and arithmetical operations. Transfor
 
 */
 
-#include "Annotation.h"
-#include <iostream>
-
 bool isPrioretized(char a, char b) {
-	if (a == '+' || a == '-') {
+	if (b == '(') {
+		return false;
+	}
+	else if (a == '+' || a == '-') {
 		return true;
 	}
 	else if ((a == '*' || a == '/') && (b == '/' || b == '*')) {
@@ -24,6 +24,7 @@ bool isPrioretized(char a, char b) {
 	return false;
 
 }
+
 int calc(char ch, int a, int b) {
 	if (ch == '+') {
 		return a + b;
@@ -45,18 +46,16 @@ int calc(char ch, int a, int b) {
 }
 
 
-void toPrefix(char* array, int size, int operatorSize) {
+int toPrefix(char* array, int size , int operatorSize) {
 	// creating stacks
 	char* polandNotation = new char[size];
 	char* operatorStack = new char[operatorSize];
 	char* operatorPointer = operatorStack;
-	//int num = 0;
 	int j = 0; //counter for stacks
 	int k = 0; // counter for operator stack
 
-
 	for (int i = 0; i < size; ++i) {
-		if ((array[i] - '0') >= 0 && array[i]-'0' <= 9) {
+		if ((array[i] - '0') >= 0 && array[i]-'0' <= 9 ) {
 			while ((array[i] - '0') >= 0 && array[i] - '0' <= 9) {
 				polandNotation[j] = array[i];
 				++j;
@@ -74,7 +73,24 @@ void toPrefix(char* array, int size, int operatorSize) {
 				++k;
 			}
 			else if (k > 0) {
-			if (isPrioretized(array[i], operatorStack[k - 1])) {
+			if (array[i]=='(') {
+				operatorStack[k] = array[i];
+				++operatorPointer;
+				++k;
+			}
+			else if (array[i] == ')') {
+				while (*operatorPointer != '(') {
+					polandNotation[j] = *operatorPointer;
+					++j;
+					operatorStack[k - 1] = ' ';
+					--k;
+					--operatorPointer;
+				}
+				operatorStack[k - 1] = ' ';
+				--k;
+				--operatorPointer;
+			}
+			else if (isPrioretized(array[i], operatorStack[k - 1])) {
 				while (k != 0 && isPrioretized(array[i], operatorStack[k - 1])) { // if priority is high enough we add to the final notation
 					polandNotation[j] = *operatorPointer;
 					++j;
@@ -113,10 +129,11 @@ void toPrefix(char* array, int size, int operatorSize) {
 	for (int i = 0; i < size; ++i) {
 		array[i] = polandNotation[i];
 	}
-
+	return j;
 	delete[] polandNotation;
 	delete[] operatorStack;
 	operatorPointer = nullptr;
+
 }
 
 int PrefixCalculator(char* array, int size,int operandSize) {
@@ -125,7 +142,6 @@ int PrefixCalculator(char* array, int size,int operandSize) {
 	int* operandPointer = operandStack;
 
 	int num = 0; // variable is used to transform chars into numbers
-	int resActions = 0; // checking wether the res has been used
 	int k = 0; // counter for operand stack
 
 	for (int i = 0; i < size; ++i) {
@@ -165,7 +181,7 @@ int PrefixCalculator(char* array, int size,int operandSize) {
 int countOperands(char* array, int size) {
 	int num = 0;
 	for (int i = 0; i < size; ++i) {
-		if (array[i] == '+' || array[i] == '-' || array[i] == '/' || array[i] == '*') {
+		if (array[i] == '+' || array[i] == '-' || array[i] == '/' || array[i] == '*' || array[i] == '(' || array[i] == ')') {
 			++num;
 		}
 	}
