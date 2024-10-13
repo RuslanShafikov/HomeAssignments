@@ -1,5 +1,5 @@
 /*  Assignment 2a
-Шафиков Руслан Альвиртович, группа 24.Б83-мм
+Шафиков Руслан Альвиртович, group 24.Б83-мм
 Contacts
 st112650@stdudent.spbu.ru
 Description
@@ -11,7 +11,6 @@ The program returns the binary file upside down
 #include <fstream>
     int main(int argc, char* argv[]) {
         if (argc < 3) {
-            std::cerr << "Использование: " << argv[0] << " <input_file> <output_file>" << std::endl;
             return 1;
         }
 
@@ -22,14 +21,14 @@ The program returns the binary file upside down
 
     infile.open(inputFileName, std::ios::binary | std::ios::out);
     if (!infile) {
-        std::cerr << "Ошибка при открытии файла" << std::endl;
+        std::cerr << "Error opening input file" << std::endl;
         return 1;
     }
 
 
     outfile.open(outputFileName, std::ios::binary | std::ios::out);
     if (!outfile) {
-        std::cerr << "Ошибка при открытии выходного файла" << std::endl;
+        std::cerr << "Error opening output file" << std::endl;
         return 1; 
     }
 
@@ -43,9 +42,7 @@ The program returns the binary file upside down
     for (std::streamsize i = size - 1; i >= 0; --i) {
         outfile << array[i];
     }
-       //std::cout << array << std::endl;
     
-
     
     delete[] array;
 

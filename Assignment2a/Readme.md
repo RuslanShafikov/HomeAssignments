@@ -1,5 +1,5 @@
 # Assignment 2a
-Шафиков Руслан Альвиртович, группа 24.Б83-мм
+Шафиков Руслан Альвиртович, group 24.Б83-мм
 ## Contacts
 st112650@stdudent.spbu.ru
 ## Description
