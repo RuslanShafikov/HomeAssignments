@@ -6,7 +6,7 @@ Contacts
 st112650@stdudent.spbu.ru
 
 Description
-The program reads file containing integers and */-+ arithmetical operations in reversed poland notation and then calculates the final result.
+The program reads file containing integers and *-+/ arithmetical operations in reversed poland notation and then calculates the final result.
 */
 #ifndef My_Poland
 #define My_Poland
