@@ -9,13 +9,15 @@ Description
 The program reads file containing integers and arithmetical operations. Transforms input into reversed poland notation and then calculates the final result.
 
 */
-
-#ifndef poland
-#define poland
-bool isPrioretized(char a, char b);
-int calc(char ch, int a, int b);
-int toPrefix(char* array, int size, int operatorSize);
-int PrefixCalculator(char* array, int size, int operandSize);
-int countOperands(char* array, int size);
+#ifndef My_Poland
+#define My_Poland
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+bool isOperator(std::string ch);
+int integersCount(std::string input);
+double calculatePostfix(int size, std::string expression, double* stack);
+double calc(std::string ch, double a, double b);
+int integersCount(std::string input);
 #endif
-
