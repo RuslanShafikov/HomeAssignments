@@ -18,16 +18,16 @@ The program returns the binary file upside down
     std::ifstream infile;
     std::ofstream outfile;
 
-    infile.open(inputFileName, std::ios::binary | std::ios::out);
+    infile.open(inputFileName, std::ios::binary | std::ios::in);
     if (!infile) {
-        std::cerr << "Ошибка при открытии файла" << std::endl;
+        std::cerr << "Error in opening input file" << std::endl;
         return 1;
     }
 
 
     outfile.open(outputFileName, std::ios::binary | std::ios::out);
     if (!outfile) {
-        std::cerr << "Ошибка при открытии выходного файла" << std::endl;
+        std::cerr << "Error in opening output file" << std::endl;
         return 1; 
     }
 
