@@ -7,28 +7,27 @@ Home assingment 2a.
 The program returns the binary file upside down
 */
 
-#include <iostream>
-#include <fstream>
+#include "reverse.h"
     int main(int argc, char* argv[]) {
         if (argc < 3) {
             return 1;
         }
 
-        const char* inputFileName = argv[1];
-        const char* outputFileName = argv[2];
+    const char* inputFileName = argv[1];
+    const char* outputFileName = argv[2];
     std::ifstream infile;
     std::ofstream outfile;
 
     infile.open(inputFileName, std::ios::binary | std::ios::out);
     if (!infile) {
-        std::cerr << "Error opening input file" << std::endl;
+        std::cerr << "Ошибка при открытии файла" << std::endl;
         return 1;
     }
 
 
     outfile.open(outputFileName, std::ios::binary | std::ios::out);
     if (!outfile) {
-        std::cerr << "Error opening output file" << std::endl;
+        std::cerr << "Ошибка при открытии выходного файла" << std::endl;
         return 1; 
     }
 
@@ -36,13 +35,14 @@ The program returns the binary file upside down
     std::streamsize size = infile.tellg();
     infile.seekg(0, std::ios::beg);
 
-    char* array = new char[size + 1];
+    char* array = new char[size + 1]; // +1 for file ending symbol
     infile.read(array, size);
 
-    for (std::streamsize i = size - 1; i >= 0; --i) {
+    fileReverse(size, array);
+    for (std::streamsize i = 0; i < size; ++i) {
         outfile << array[i];
     }
-    
+
     
     delete[] array;
 
@@ -51,4 +51,5 @@ The program returns the binary file upside down
     
    
     return 0;
-} 
+
+    } 

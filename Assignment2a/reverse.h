@@ -15,4 +15,4 @@ The program returns the binary file upside down
 
 void fileReverse(std::streamsize size, char* array);
 
-#endif // MYREVERSE_H
+#endif 
