@@ -8,4 +8,4 @@ The program returns the binary file upside down
 ## Build
 make
 ## Run 
-./main input.txt output.txt
+./my_program input.txt output.txt
