@@ -2,7 +2,7 @@
 // Assignment 3
 // st112650@student.spbu.ru
 
-#include "Composition.h"
-void Team::SayTeam(std::string TeemName) const{
+#include "Team.h"
+void Team::SayTeam(const std::string& TeamName) const{
     std::cout << "We are " << TeamName;
 }
