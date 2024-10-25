@@ -4,7 +4,7 @@
 
 #include "Decepticon.h"
 
-std::string Decepticon::GetArmor() {
+std::string Decepticon::GetArmor() const {
 	return armor;
 }
 
