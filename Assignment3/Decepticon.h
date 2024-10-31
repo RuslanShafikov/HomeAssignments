@@ -7,18 +7,14 @@
 #include "Transformer.h"
 class Decepticon : public Transformer {
 private:
-	std::string armor; //@note which type of armor they can transform into
+  std::string armor; //@note which type of armor they can transform into
 public:
-	std::string GetArmor() const;
+  std::string GetArmor() const;
 
-	void SetArmor(const std::string& armor);
+  void SetArmor(const std::string& armor);
 
-	Decepticon(const std::string& name, int age, bool isTransformed, double maxSpeed, const std::string& armor) : Transformer(name, age, isTransformed, maxSpeed) , armor(armor){
+  Decepticon(const std::string& name, int age, bool isTransformed, double maxSpeed, const std::string& armor);
 
-	}
-
-	~Decepticon() {
-
-	}
+  ~Decepticon();
 };
 #endif

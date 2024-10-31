@@ -9,34 +9,31 @@
 
 class Transformer {
 private:
-	std::string name;
-	int age;
-	bool isTransformed; //@note checking wether transformer transforemed into a machine
-	double maxSpeed; //@note speed in km/h
+  std::string name;
+  int age;
+  bool isTransformed; //@note checking wether transformer transforemed into a machine
+  double maxSpeed; //@note speed in km/h
 
 
 public:
-	int GetAge();
+  int GetAge();
 
-	void SetAge(int& age);
+  void SetAge(int& age);
 
-	double GetMaxSpeed();
+  double GetMaxSpeed();
 
-	void SetMaxSpeed(double& maxSpeed);
+  void SetMaxSpeed(double& maxSpeed);
 
-	std::string GetName();
+  std::string GetName();
 
-	void SetName(std::string& name);
+  void SetName(std::string& name);
 
-	bool GetIsTransformed();
+  bool GetIsTransformed();
 
-	void SetIsTransformed(bool& isTransformed);
+  void SetIsTransformed(bool& isTransformed);
 
-	Transformer(const std::string& name, int age, bool isTransformed, double maxSpeed) : name(name), age(age), isTransformed(isTransformed), maxSpeed(maxSpeed) {
-		
-	}
+  Transformer(const std::string& name, int age, bool isTransformed, double maxSpeed);
 
-	~Transformer() {
-	}
+  ~Transformer();
 };
 #endif

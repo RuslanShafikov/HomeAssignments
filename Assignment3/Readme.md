@@ -8,5 +8,5 @@ Program consists of a lot test classes with their own methods which will be test
 ## Build
 make
 ## Run 
-./my_program # for main program
-./my_test # for gtests
+./my_program for main program
+./my_test for gtests

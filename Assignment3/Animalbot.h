@@ -14,13 +14,9 @@ public:
     std::string GetAnimal();
     void SetAnimal(const std::string& animal);
 
-    Animalbot(const std::string& name, int age, bool isTransformed, double maxSpeed, std::string& animal) : Transformer(name, age, isTransformed, maxSpeed), animal(animal) {
+    Animalbot(const std::string& name, int age, bool isTransformed, double maxSpeed, std::string& animal);
 
-    }
-
-    ~Animalbot() {
-
-    }
+    ~Animalbot();
 };
 
 #endif

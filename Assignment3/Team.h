@@ -1,4 +1,4 @@
-//Shafikov Ruslan
+//Shafikov Ruslan 
 // Assignment 3
 // st112650@student.spbu.ru
 
@@ -22,10 +22,9 @@ private:
     std::string TeamName;
 
 public:
-    Team(const std::string& teamName, const std::string& playerName)
-        : player(playerName), TeamName(teamName) {}
+    Team(const std::string& teamName, const std::string& playerName);
 
-    void SayTeam(const std::string& teamName) const;
+    void SayTeam(std::string& teamName) const;
 };
 
 #endif

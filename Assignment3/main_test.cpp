@@ -76,7 +76,7 @@ TEST(AutobotTest, AllFunctionsTest) {
 }
 
 TEST(TeamTest, AllFunctionsTest) {
-    const std::string TeamName = "Transformers";
+    std::string TeamName = "Transformers";
     const std::string captain = "Optimus";
     std::ostringstream coutStream;
     std::streambuf* originalCoutBuffer = std::cout.rdbuf(coutStream.rdbuf());

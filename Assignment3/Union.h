@@ -5,17 +5,16 @@
 #ifndef AssociationH
 #define AssociationH
 #include "Autobot.h"
+
 class Union {
 private:
     Autobot A;
     int power;
 
 public:
-    Union(const Autobot& A, int d) : A(A), power(d) {}
-
+    Union(const Autobot& A, int d);
     void SetPower(int power);
     int GetPower();
 };
 
 #endif
-

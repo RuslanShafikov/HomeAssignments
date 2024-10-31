@@ -4,33 +4,41 @@
 
 #include"Transformer.h"
 int Transformer::GetAge() {
-	return age;
+  return age;
 }
 
 void Transformer::SetAge(int& age) {
-	this->age = age;
+  this->age = age;
 }
 
 double Transformer::GetMaxSpeed() {
-	return maxSpeed;
+  return maxSpeed;
 }
 
 void Transformer::SetMaxSpeed(double& maxSpeed) {
-	this->maxSpeed = maxSpeed;
+  this->maxSpeed = maxSpeed;
 }
 
 std::string Transformer::GetName() {
-	return name;
+  return name;
 }
 
 void Transformer::SetName(std::string& name) {
-	this->name = name;
+  this->name = name;
 }
 
 bool Transformer::GetIsTransformed() {
-	return isTransformed;
+  return isTransformed;
 }
 
 void Transformer::SetIsTransformed(bool& isTransformed) {
-	this->isTransformed = isTransformed;
+  this->isTransformed = isTransformed;
+}
+
+
+Transformer::Transformer(const std::string& name, int age, bool isTransformed, double maxSpeed) : name(name), age(age), isTransformed(isTransformed), maxSpeed(maxSpeed) {
+
+}
+
+Transformer::~Transformer() {
 }
