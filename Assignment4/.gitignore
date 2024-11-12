@@ -3,6 +3,7 @@
 # st112650@student.spbu.ru
 # group 83Б
 *.o
+*.orig
 *.exe
 *.dll
 *.so
