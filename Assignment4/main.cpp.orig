@@ -19,25 +19,29 @@ int main() {
     Animalbot D(name, 2, false, 23.0, animal);
     if (A > C) {
         std::cout << "true" << std::endl;
-    } else {
+    }
+    else {
         std::cout << "False" << std::endl;
     }
 
     if (C > A) {
         std::cout << "true" << std::endl;
-    } else {
+    }
+    else {
         std::cout << "False" << std::endl;
     }
 
     if (B < D) {
         std::cout << "true" << std::endl;
-    } else {
+    }
+    else {
         std::cout << "False" << std::endl;
     }
 
     if (D < B) {
         std::cout << "true" << std::endl;
-    } else {
+    }
+    else {
         std::cout << "False" << std::endl;
     }
 
