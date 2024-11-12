@@ -10,6 +10,10 @@ std::string Animalbot::GetAnimal() {
 	return animal;
 }
 
+double Animalbot::GetMaxSpeed() const {
+	return Transformer::GetMaxSpeed();
+}
+
 void Animalbot::SetAnimal(const std::string& animal) {
 	this->animal = animal;
 }
@@ -23,18 +27,19 @@ Animalbot::Animalbot() : Transformer() {
 	this->animal = "Bug";
 }
 
+
 bool Animalbot::operator>(const Animalbot& other) {
-	Transformer T = other;
-	return Transformer::operator>(T);
+		return this->GetMaxSpeed() > other.GetMaxSpeed();
 }
 
+
+
 bool Animalbot::operator<(const Animalbot& other) {
-	Transformer T = other;
-	return Transformer::operator<(T);
+	return this->GetMaxSpeed() < other.GetMaxSpeed();
 }
 
 std::ostream& operator<<(std::ostream& os, const Animalbot& A) {
-	operator<<(os, (Transformer)A);
+	os << static_cast<const Transformer&>(A);
 	os << " Might transform into " << A.animal;
 	return os;
 }

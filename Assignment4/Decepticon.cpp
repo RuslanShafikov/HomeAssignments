@@ -11,6 +11,9 @@ std::string Decepticon::GetArmor() const {
 void Decepticon::SetArmor(const std::string& armor) {
 	this->armor = armor;
 }
+double Decepticon::GetMaxSpeed() const {
+	return Transformer::GetMaxSpeed();
+}
 
 Decepticon::Decepticon(const std::string& name, int age, bool isTransformed, double maxSpeed, const std::string& armor) : Transformer(name, age, isTransformed, maxSpeed), armor(armor) {
 
@@ -20,18 +23,18 @@ Decepticon::Decepticon() : Transformer() {
 }
 
 bool Decepticon::operator>(const Decepticon& other) {
-	Transformer T = other;
-	return Transformer::operator>(T);
+	return this->GetMaxSpeed() > other.GetMaxSpeed();
 }
 
+
+
 bool Decepticon::operator<(const Decepticon& other) {
-	Transformer T = other;
-	return Transformer::operator<(T);
+	return this->GetMaxSpeed() < other.GetMaxSpeed();
 }
 
 
 std::ostream& operator<<(std::ostream& os, const Decepticon& A) {
-	operator <<(os, (Transformer)A);
+	os << static_cast<const Transformer&>(A);
 	os << " Might transform into " << A.armor;
 	return os;
 }

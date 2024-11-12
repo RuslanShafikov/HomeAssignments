@@ -18,11 +18,9 @@ public:
 	Animalbot();
 
 	friend std::ostream& operator << (std::ostream& os, const Animalbot& A);
-
-
 	bool operator>(const Animalbot& other);
 	bool operator<(const Animalbot& other);
-
+	double GetMaxSpeed() const;
 	// Transformer& operator=(const Animalbot& other);
 
 	~Animalbot();

@@ -11,6 +11,7 @@ private:
 public:
 	std::string GetCar();
 	void SetCar(const std::string& car);
+	double GetMaxSpeed() const;
 
 	Autobot(const std::string& name, int age, bool isTransformed, double maxSpeed, const std::string& car);
 	Autobot();

@@ -1,4 +1,4 @@
-﻿//Shafikov Ruslan 
+//Shafikov Ruslan 
 // Assignment 3
 // st112650@student.spbu.ru
 
@@ -10,41 +10,42 @@
 #include "Team.h"
 #include "Union.h"
 
-int main(int argc, char** argv) {
-	Transformer A("A", 2, false, 22.0);
-	int age = 345;
-	A.SetAge(age);
-	int k = A.GetAge();
-	std::cout << k << std::endl;
-	double speed = 345.9;
-	A.SetMaxSpeed(speed);
-	speed = A.GetMaxSpeed();
-	std::cout << speed << std::endl;
+int main() {
+  std::string name = "L";
+  std::string animal = "owl";
+  Transformer A("A", 2, false, 22.0);
+  Animalbot B(name, 2, false, 22.0, animal);
+  Transformer C("A", 2, false, 22.0);
+  Animalbot D(name, 2, false, 23.0, animal);
+  if (A > C) {
+    std::cout << "true" << std::endl;
+  }
+  else {
+    std::cout << "False" << std::endl;
+  }
 
-	std::string name = "GG";
-	A.SetName(name);
-	const std::string g = A.GetName();
-	std::cout << name << std::endl;
+  if (C > A) {
+    std::cout << "true" << std::endl;
+  }
+  else {
+    std::cout << "False" << std::endl;
+  }
 
-	Decepticon C(name, age, true, speed, "A");
-	C.SetArmor("Tank");
-	std::cout << C.GetArmor() << std::endl;
+  if (B < D) {
+    std::cout << "true" << std::endl;
+  }
+  else {
+    std::cout << "False" << std::endl;
+  }
 
-	Animalbot S(name, age, true, speed, name);
+  if (D < B) {
+    std::cout << "true" << std::endl;
+  }
+  else {
+    std::cout << "False" << std::endl;
+  }
 
-	S.SetAnimal("rabbit");
-	std::cout << S.GetAnimal() << std::endl;
-
-	Autobot D(name, age, true, speed, name);
-
-	D.SetCar("lambo");
-	std::cout << D.GetCar() << std::endl;
-
-	Union U(D, 14);
-	U.SetPower(23);
-
-	const std::string TeamName;
-	Team T(TeamName, TeamName);
-	return 0;
+  std::cout << A << std::endl;
+  std::cout << B << std::endl;
+  return 0;
 }
-

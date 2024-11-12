@@ -10,7 +10,7 @@ private:
 	std::string armor; //@note which type of armor they can transform into
 public:
 	std::string GetArmor() const;
-
+	double GetMaxSpeed() const;
 	void SetArmor(const std::string& armor);
 	Decepticon();
 

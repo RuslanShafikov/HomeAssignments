@@ -11,7 +11,7 @@ void Transformer::SetAge(int& age) {
 	this->age = age;
 }
 
-double Transformer::GetMaxSpeed() {
+double Transformer::GetMaxSpeed() const{
 	return maxSpeed;
 }
 
@@ -75,15 +75,19 @@ bool Transformer::operator<(const Transformer& other) {
 	return false;
 }
 
+Transformer::Transformer(const Transformer& other)
+  : name(other.name), age(other.age), isTransformed(other.isTransformed), maxSpeed(other.maxSpeed) {
+}
+
 Transformer& Transformer::operator=(const Transformer& other) {
-	if (this == &other) {
-		return *this;
-	}
+  if (this == &other) {
+    return *this;
+  }
 
-	name = other.name;
-	age = other.age;
-	isTransformed = other.isTransformed;
-	maxSpeed = other.maxSpeed;
+  name = other.name;
+  age = other.age;
+  isTransformed = other.isTransformed;
+  maxSpeed = other.maxSpeed;
 
-	return *this;
+  return *this;
 }

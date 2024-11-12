@@ -22,4 +22,4 @@ std::ostream& operator<<(std::ostream& os, const Team& T) {
 
 Team::Team() : TeamName("Unknown Team"), player("Unknown Player") {
 }
-Team::Team(const std::string& teamName, const std::string& playerName) : player(playerName), TeamName(teamName) {}
+Team::Team(const std::string& teamName, const std::string& playerName) : TeamName(teamName), player(playerName){}

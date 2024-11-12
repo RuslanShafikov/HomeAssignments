@@ -25,9 +25,8 @@ public:
 	bool operator>(const Team& other);
 	bool operator<(const Team& other);
 private:
-	RandomPlayer player;
 	std::string TeamName;
-
+	RandomPlayer player;
 };
 
 #endif

@@ -10,6 +10,9 @@ std::string Autobot::GetCar() {
 void Autobot::SetCar(const std::string& car) {
 	this->car = car;
 }
+double Autobot::GetMaxSpeed() const {
+	return Transformer::GetMaxSpeed();
+}
 
 Autobot::Autobot(const std::string& name, int age, bool isTransformed, double maxSpeed, const std::string& car)
 	: Transformer(name, age, isTransformed, maxSpeed), car(car) {
@@ -20,17 +23,17 @@ Autobot::Autobot() : Transformer() {
 }
 
 bool Autobot::operator>(const Autobot& other) {
-	Transformer T = other;
-	return Transformer::operator>(T);
+	return this->GetMaxSpeed() > other.GetMaxSpeed();
 }
 
+
+
 bool Autobot::operator<(const Autobot& other) {
-	Transformer T = other;
-	return Transformer::operator<(T);
+	return this->GetMaxSpeed() < other.GetMaxSpeed();
 }
 
 std::ostream& operator<<(std::ostream& os, const Autobot& A) {
-	operator<<(os, (Transformer)A);
+        os << static_cast<const Transformer&>(A);
 	os << " Might transform into " << A.car;
 	return os;
 }

@@ -1,4 +1,13 @@
-#include "pch.h"
+#include "Transformer.h"
+#include "Decepticon.h"
+#include "Animalbot.h"
+#include "Autobot.h"
+#include "Team.h"
+#include "Union.h"
+#include <iostream>
+#include <string>
+#include <gtest/gtest.h>
+#include <sstream>
 
 TEST(TransformerTest, AgeFunctions) {
 	const std::string name = "A";
@@ -79,7 +88,6 @@ TEST(TeamTest, AllFunctionsTest) {
 TEST(UnionTest, AllFunctionsTest) {
 	std::string name = "Bumblbee";
 	std::string car = "Chevrolet Camaro";
-	int power = 2344;
 	int age = 1000;
 	double speed = 12321.0;
 	Autobot D(name, age, true, speed, car);
@@ -226,13 +234,79 @@ TEST(TeamTest, OutputOperatorTest) {
 	EXPECT_EQ(output, expected_output);
 }
 
-TEST(TransformerTest, SelfAssignmentTest) {
-	Transformer transformer("Optimus Prime", 10, true, 120.5);
-	transformer = transformer;
-	EXPECT_EQ(transformer.GetName(), "Optimus Prime");
-	EXPECT_EQ(transformer.GetAge(), 10);
-	EXPECT_TRUE(transformer.GetIsTransformed());
-	EXPECT_EQ(transformer.GetMaxSpeed(), 120.5);
+
+TEST(TransformerTest, CopyConstructor) {
+    Transformer t1("Optimus", 100, true, 150.0);
+    Transformer t2 = t1;
+
+    EXPECT_EQ(t1.GetName(), t2.GetName());
+    EXPECT_EQ(t1.GetAge(), t2.GetAge());
+    EXPECT_EQ(t1.GetIsTransformed(), t2.GetIsTransformed());
+    EXPECT_DOUBLE_EQ(t1.GetMaxSpeed(), t2.GetMaxSpeed());
+}
+
+
+TEST(TransformerTest, CopyAssignmentOperator) {
+    Transformer t1("Optimus", 100, true, 150.0);
+    Transformer t2("Bumblebee", 50, false, 120.0);
+
+    t2 = t1;
+
+    EXPECT_EQ(t1.GetName(), t2.GetName());
+    EXPECT_EQ(t1.GetAge(), t2.GetAge());
+    EXPECT_EQ(t1.GetIsTransformed(), t2.GetIsTransformed());
+    EXPECT_DOUBLE_EQ(t1.GetMaxSpeed(), t2.GetMaxSpeed());
+}
+
+TEST(TransformerTest, CopyAssignmentSelfAssignment) {
+    Transformer t1("Optimus", 100, true, 150.0);
+    t1 = t1;
+    EXPECT_EQ(t1.GetName(), "Optimus");
+    EXPECT_EQ(t1.GetAge(), 100);
+    EXPECT_EQ(t1.GetIsTransformed(), true);
+    EXPECT_DOUBLE_EQ(t1.GetMaxSpeed(), 150.0);
+}
+
+TEST(TransformerTest, CopyConstructorSelfAssignment) {
+    Transformer t1("Optimus", 100, true, 150.0);
+    Transformer t2(t1);
+    EXPECT_EQ(t1.GetName(), t2.GetName());
+    EXPECT_EQ(t1.GetAge(), t2.GetAge());
+    EXPECT_EQ(t1.GetIsTransformed(), t2.GetIsTransformed());
+    EXPECT_DOUBLE_EQ(t1.GetMaxSpeed(), t2.GetMaxSpeed());
+}
+
+TEST(TransformerTest, GetMaxSpeedTest) {
+	Transformer t1("Optimus", 5, true, 120.0);
+	EXPECT_DOUBLE_EQ(t1.GetMaxSpeed(), 120.0);
+}
+
+TEST(AnimalbotTest, GetMaxSpeedTest) {
+	std::string Animalbot1 = "Animalbot1";
+	std::string Animalbot2 = "Animalbot1";
+	std::string lion = "Lion";
+	Animalbot a1(Animalbot1, 5, true, 100.0, lion);
+	EXPECT_DOUBLE_EQ(a1.GetMaxSpeed(), 100.0);
+
+	std::string tiger = "Lion";
+	Animalbot a2(Animalbot2, 10, false, 150.0, tiger);
+	EXPECT_DOUBLE_EQ(a2.GetMaxSpeed(), 150.0);
+}
+
+TEST(AutobotTest, GetMaxSpeedTest) {
+	Autobot a1("Autobot1", 5, true, 120.0, "Car");
+	EXPECT_DOUBLE_EQ(a1.GetMaxSpeed(), 120.0);
+
+	Autobot a2("Autobot2", 8, false, 180.0, "Truck");
+	EXPECT_DOUBLE_EQ(a2.GetMaxSpeed(), 180.0);
+}
+
+TEST(DecepticonTest, GetMaxSpeedTest) {
+	Decepticon d1("Decepticon1", 6, true, 130.0, "Steel Armor");
+	EXPECT_DOUBLE_EQ(d1.GetMaxSpeed(), 130.0);
+
+	Decepticon d2("Decepticon2", 4, false, 160.0, "Titanium Armor");
+	EXPECT_DOUBLE_EQ(d2.GetMaxSpeed(), 160.0);
 }
 
 

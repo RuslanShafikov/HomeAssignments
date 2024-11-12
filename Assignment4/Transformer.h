@@ -20,7 +20,7 @@ public:
 
 	void SetAge(int& age);
 
-	double GetMaxSpeed();
+	virtual double GetMaxSpeed() const;
 
 	void SetMaxSpeed(double& maxSpeed);
 
@@ -41,7 +41,8 @@ public:
 	bool operator>(const Transformer& other);
 	bool operator<(const Transformer& other);
 
-	Transformer& operator=(const Transformer& other);
+	Transformer(const Transformer& other);
+        Transformer& operator=(const Transformer& other);
 
 	~Transformer();
 };
