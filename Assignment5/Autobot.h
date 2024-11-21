@@ -1,11 +1,12 @@
 //Shafikov Ruslan
-// Assignment 3
+// Assignment 5
 // st112650@student.spbu.ru
 
 #ifndef AutobotH
 #define AutobotH
 #include "Transformer.h"
-class Autobot : public Transformer {
+class Autobot : public Transformer
+{
 private:
     std::string car; //@note which type of car they can transform into
 public:

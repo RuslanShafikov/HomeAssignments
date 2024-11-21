@@ -1,5 +1,5 @@
 //Shafikov Ruslan
-// Assignment 3
+// Assignment 5
 // st112650@student.spbu.ru
 
 
@@ -9,10 +9,11 @@
 #include <vector>
 #include <memory>
 
-int main() {
+int main()
+{
     Autobot autobot1("Optimus", 10, true, 120.5, "Truck");
     Autobot autobot2("Bumblebee", 5, false, 100.0, "Car");
-    
+
     Decepticon decepticon1("Megatron", 15, true, 150.0, "Tank");
     Decepticon decepticon2("Starscream", 20, true, 130.0, "Jet");
 
@@ -69,7 +70,8 @@ int main() {
     transformers.push_back(std::make_shared<Transformer>("Wei", 20, true, 80.0));
     transformers.push_back(std::make_shared<Transformer>("Dao", 20, false, 60.0));
 
-    for (const auto& transformer : transformers) {
+    for (const auto& transformer : transformers)
+    {
         transformer->transform();
         transformer->openFire();
         transformer->ulta();

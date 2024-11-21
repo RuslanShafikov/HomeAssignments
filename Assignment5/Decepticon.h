@@ -1,11 +1,12 @@
 //Shafikov Ruslan
-// Assignment 3
+// Assignment 5
 // st112650@student.spbu.ru
 
 #ifndef DecepticonH
 #define DecepticonH
 #include "Transformer.h"
-class Decepticon : public Transformer {
+class Decepticon : public Transformer
+{
 private:
     std::string armor; //@note which type of armor they can transform into
 public:

@@ -1,5 +1,5 @@
 //Shafikov Ruslan
-// Assignment 3
+// Assignment 5
 // st112650@student.spbu.ru
 
 #ifndef MyClassH
@@ -7,7 +7,8 @@
 #include <iostream>
 #include <string>
 
-class Transformer {
+class Transformer
+{
 private:
     std::string name;
     int age;

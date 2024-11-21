@@ -1,24 +1,26 @@
 CXX = g++
-CXXFLAGS = -Wall -g -Werror -Wpedantic -W
+      CXXFLAGS = -Wall -g -Werror -Wpedantic -W
 
-TARGET = my_program
-TEST_TARGET = my_test
+                 TARGET = my_program
+                          TEST_TARGET = my_test
 
-SRC = Autobot.cpp Decepticon.cpp Transformer.cpp main.cpp
-TEST_SRC = main_test.cpp Autobot.cpp Decepticon.cpp Transformer.cpp
-OBJ = $(SRC:.cpp=.o)
-TEST_OBJ = $(TEST_SRC:.cpp=.o)
+                                        SRC = Autobot.cpp Decepticon.cpp Transformer.cpp main.cpp
+                                                TEST_SRC = main_test.cpp Autobot.cpp Decepticon.cpp Transformer.cpp
+                                                        OBJ = $(SRC:.cpp=.o)
+                                                                TEST_OBJ = $(TEST_SRC:.cpp=.o)
 
-all: $(TARGET) $(TEST_TARGET)
+                                                                        all:
+                                                                        $(TARGET) $(TEST_TARGET)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+                                                                        $(TARGET): $(OBJ)
+                                                                            $(CXX) $(CXXFLAGS) -o $@ $^
 
-$(TEST_TARGET): $(TEST_OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -pthread
+                                                                            $(TEST_TARGET): $(TEST_OBJ)
+                                                                            $(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -pthread
 
-%.o: %.cpp %.h
-	$(CXX) $(CXXFLAGS) -c $<
+                                                                        %.o:
+                                                                            %.cpp %.h
+                                                                            $(CXX) $(CXXFLAGS) -c $<
 
-clean:
-	rm -f $(OBJ) $(TARGET) $(TEST_OBJ) $(TEST_TARGET)
+                                                                        clean:
+                                                                            rm -f $(OBJ) $(TARGET) $(TEST_OBJ) $(TEST_TARGET)
